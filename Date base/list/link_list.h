@@ -1,0 +1,47 @@
+#ifndef _LINK_LIST_H_
+#define _LINK_LIST_H_
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//链表节点
+typedef struct LINKNODE{
+	void* data;						//指向任何数据类型的数据
+	struct LINKNODE *next;
+}LinkNode, *Node;
+
+//链表结构体
+typedef struct LINKLIST{
+	LinkNode* head;				//头结点
+	int size;
+}LinkList;
+
+//打印函数的回调指针
+typedef void(*SHOW)(void*);
+
+//初始化链表
+LinkList * Init_LinkList();
+
+//指定位置插入
+ void Insert_LinkList(LinkList *list, int pos, void*val);
+
+ //删除指定为值
+ void RemoveByPos_LinkList(LinkList *list, int pos);
+
+//链表长度
+int  Size_LinkList(LinkList *list);
+
+//返回第一个节点
+void* Front_LinkList(LinkList *list);
+
+//查找值
+int Find_LinkList(LinkList *list, void *val);
+
+//打印
+void Show_LinkList(LinkList *list, SHOW show);
+
+//释放
+void FreeSpace_LinkList(LinkList * list);
+
+#endif
